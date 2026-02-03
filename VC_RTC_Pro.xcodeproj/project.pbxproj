@@ -1,0 +1,617 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E6D19EE52F3210EA00B9F9A0 /* WebRTC in Frameworks */ = {isa = PBXBuildFile; productRef = E6D19EE42F3210EA00B9F9A0 /* WebRTC */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E6D19EC22F32102400B9F9A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6D19EAC2F32102300B9F9A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6D19EB32F32102300B9F9A0;
+			remoteInfo = VC_RTC_Pro;
+		};
+		E6D19ECC2F32102400B9F9A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6D19EAC2F32102300B9F9A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6D19EB32F32102300B9F9A0;
+			remoteInfo = VC_RTC_Pro;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E6D19EB42F32102300B9F9A0 /* VC_RTC_Pro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VC_RTC_Pro.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6D19EC12F32102400B9F9A0 /* VC_RTC_ProTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VC_RTC_ProTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6D19ECB2F32102400B9F9A0 /* VC_RTC_ProUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VC_RTC_ProUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		E6D19EB62F32102300B9F9A0 /* VC_RTC_Pro */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VC_RTC_Pro;
+			sourceTree = "<group>";
+		};
+		E6D19EC42F32102400B9F9A0 /* VC_RTC_ProTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VC_RTC_ProTests;
+			sourceTree = "<group>";
+		};
+		E6D19ECE2F32102400B9F9A0 /* VC_RTC_ProUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = VC_RTC_ProUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E6D19EB12F32102300B9F9A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6D19EE52F3210EA00B9F9A0 /* WebRTC in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D19EBE2F32102400B9F9A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D19EC82F32102400B9F9A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E6D19EAB2F32102300B9F9A0 = {
+			isa = PBXGroup;
+			children = (
+				E6D19EB62F32102300B9F9A0 /* VC_RTC_Pro */,
+				E6D19EC42F32102400B9F9A0 /* VC_RTC_ProTests */,
+				E6D19ECE2F32102400B9F9A0 /* VC_RTC_ProUITests */,
+				E6D19EE32F3210EA00B9F9A0 /* Frameworks */,
+				E6D19EB52F32102300B9F9A0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E6D19EB52F32102300B9F9A0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E6D19EB42F32102300B9F9A0 /* VC_RTC_Pro.app */,
+				E6D19EC12F32102400B9F9A0 /* VC_RTC_ProTests.xctest */,
+				E6D19ECB2F32102400B9F9A0 /* VC_RTC_ProUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E6D19EE32F3210EA00B9F9A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E6D19EB32F32102300B9F9A0 /* VC_RTC_Pro */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6D19ED52F32102400B9F9A0 /* Build configuration list for PBXNativeTarget "VC_RTC_Pro" */;
+			buildPhases = (
+				E6D19EB02F32102300B9F9A0 /* Sources */,
+				E6D19EB12F32102300B9F9A0 /* Frameworks */,
+				E6D19EB22F32102300B9F9A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E6D19EB62F32102300B9F9A0 /* VC_RTC_Pro */,
+			);
+			name = VC_RTC_Pro;
+			packageProductDependencies = (
+				E6D19EE42F3210EA00B9F9A0 /* WebRTC */,
+			);
+			productName = VC_RTC_Pro;
+			productReference = E6D19EB42F32102300B9F9A0 /* VC_RTC_Pro.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E6D19EC02F32102400B9F9A0 /* VC_RTC_ProTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6D19ED82F32102400B9F9A0 /* Build configuration list for PBXNativeTarget "VC_RTC_ProTests" */;
+			buildPhases = (
+				E6D19EBD2F32102400B9F9A0 /* Sources */,
+				E6D19EBE2F32102400B9F9A0 /* Frameworks */,
+				E6D19EBF2F32102400B9F9A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6D19EC32F32102400B9F9A0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E6D19EC42F32102400B9F9A0 /* VC_RTC_ProTests */,
+			);
+			name = VC_RTC_ProTests;
+			packageProductDependencies = (
+			);
+			productName = VC_RTC_ProTests;
+			productReference = E6D19EC12F32102400B9F9A0 /* VC_RTC_ProTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E6D19ECA2F32102400B9F9A0 /* VC_RTC_ProUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6D19EDB2F32102400B9F9A0 /* Build configuration list for PBXNativeTarget "VC_RTC_ProUITests" */;
+			buildPhases = (
+				E6D19EC72F32102400B9F9A0 /* Sources */,
+				E6D19EC82F32102400B9F9A0 /* Frameworks */,
+				E6D19EC92F32102400B9F9A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6D19ECD2F32102400B9F9A0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				E6D19ECE2F32102400B9F9A0 /* VC_RTC_ProUITests */,
+			);
+			name = VC_RTC_ProUITests;
+			packageProductDependencies = (
+			);
+			productName = VC_RTC_ProUITests;
+			productReference = E6D19ECB2F32102400B9F9A0 /* VC_RTC_ProUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E6D19EAC2F32102300B9F9A0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2610;
+				LastUpgradeCheck = 2610;
+				TargetAttributes = {
+					E6D19EB32F32102300B9F9A0 = {
+						CreatedOnToolsVersion = 26.1.1;
+					};
+					E6D19EC02F32102400B9F9A0 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = E6D19EB32F32102300B9F9A0;
+					};
+					E6D19ECA2F32102400B9F9A0 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = E6D19EB32F32102300B9F9A0;
+					};
+				};
+			};
+			buildConfigurationList = E6D19EAF2F32102300B9F9A0 /* Build configuration list for PBXProject "VC_RTC_Pro" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E6D19EAB2F32102300B9F9A0;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				E6D19EDE2F32107A00B9F9A0 /* XCRemoteSwiftPackageReference "WebRTC" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E6D19EB52F32102300B9F9A0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E6D19EB32F32102300B9F9A0 /* VC_RTC_Pro */,
+				E6D19EC02F32102400B9F9A0 /* VC_RTC_ProTests */,
+				E6D19ECA2F32102400B9F9A0 /* VC_RTC_ProUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E6D19EB22F32102300B9F9A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D19EBF2F32102400B9F9A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D19EC92F32102400B9F9A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E6D19EB02F32102300B9F9A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D19EBD2F32102400B9F9A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D19EC72F32102400B9F9A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E6D19EC32F32102400B9F9A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6D19EB32F32102300B9F9A0 /* VC_RTC_Pro */;
+			targetProxy = E6D19EC22F32102400B9F9A0 /* PBXContainerItemProxy */;
+		};
+		E6D19ECD2F32102400B9F9A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6D19EB32F32102300B9F9A0 /* VC_RTC_Pro */;
+			targetProxy = E6D19ECC2F32102400B9F9A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E6D19ED32F32102400B9F9A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E6D19ED42F32102400B9F9A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E6D19ED62F32102400B9F9A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F54BZL8D2D;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need microphone access for audio calls";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need camera access for video calls";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "s.VC-RTC-Pro";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E6D19ED72F32102400B9F9A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F54BZL8D2D;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need microphone access for audio calls";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need camera access for video calls";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "s.VC-RTC-Pro";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E6D19ED92F32102400B9F9A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "s.VC-RTC-ProTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VC_RTC_Pro.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VC_RTC_Pro";
+			};
+			name = Debug;
+		};
+		E6D19EDA2F32102400B9F9A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "s.VC-RTC-ProTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VC_RTC_Pro.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/VC_RTC_Pro";
+			};
+			name = Release;
+		};
+		E6D19EDC2F32102400B9F9A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "s.VC-RTC-ProUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VC_RTC_Pro;
+			};
+			name = Debug;
+		};
+		E6D19EDD2F32102400B9F9A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "s.VC-RTC-ProUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = VC_RTC_Pro;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E6D19EAF2F32102300B9F9A0 /* Build configuration list for PBXProject "VC_RTC_Pro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6D19ED32F32102400B9F9A0 /* Debug */,
+				E6D19ED42F32102400B9F9A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6D19ED52F32102400B9F9A0 /* Build configuration list for PBXNativeTarget "VC_RTC_Pro" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6D19ED62F32102400B9F9A0 /* Debug */,
+				E6D19ED72F32102400B9F9A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6D19ED82F32102400B9F9A0 /* Build configuration list for PBXNativeTarget "VC_RTC_ProTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6D19ED92F32102400B9F9A0 /* Debug */,
+				E6D19EDA2F32102400B9F9A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6D19EDB2F32102400B9F9A0 /* Build configuration list for PBXNativeTarget "VC_RTC_ProUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6D19EDC2F32102400B9F9A0 /* Debug */,
+				E6D19EDD2F32102400B9F9A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E6D19EDE2F32107A00B9F9A0 /* XCRemoteSwiftPackageReference "WebRTC" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stasel/WebRTC.git";
+			requirement = {
+				kind = exactVersion;
+				version = 114.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E6D19EE42F3210EA00B9F9A0 /* WebRTC */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E6D19EDE2F32107A00B9F9A0 /* XCRemoteSwiftPackageReference "WebRTC" */;
+			productName = WebRTC;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = E6D19EAC2F32102300B9F9A0 /* Project object */;
+}
