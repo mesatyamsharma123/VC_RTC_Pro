@@ -4,21 +4,25 @@ import WebRTC
 // Helper: Wrapper for WebRTC Video View
 struct VideoView: UIViewRepresentable {
     let track: RTCVideoTrack?
+    var onAppear: ((RTCVideoRenderer) -> Void)? = nil // ✅ Added this back
     
-    var onAppear: ((RTCVideoRenderer) -> Void)? = nil
-
     func makeUIView(context: Context) -> RTCMTLVideoView {
         let view = RTCMTLVideoView(frame: .zero)
         view.videoContentMode = .scaleAspectFill
         return view
     }
-
+    
     func updateUIView(_ uiView: RTCMTLVideoView, context: Context) {
-        // If track changed, remove old and add new
-        track?.add(uiView)
+        // Case 1: Remote Video (Track is passed in)
+        if let track = track {
+            track.add(uiView)
+        }
+        
+        // Case 2: Local Video (We need to send the view back to the ViewModel)
         onAppear?(uiView)
     }
 }
+
 
 struct ContentView: View {
     @StateObject var viewModel = CallViewModel()

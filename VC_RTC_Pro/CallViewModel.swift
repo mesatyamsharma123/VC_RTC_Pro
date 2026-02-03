@@ -133,7 +133,9 @@ extension CallViewModel: WebRTCClientDelegate {
     }
     
     func webRTCClient(_ client: WebRTCClient, didReceiveRemoteVideoTrack track: RTCVideoTrack) {
-        // Update UI on Main Thread
+        print("✅ RECEIVED REMOTE VIDEO TRACK")
+        
+      
         DispatchQueue.main.async {
             self.remoteVideoTrack = track
         }
