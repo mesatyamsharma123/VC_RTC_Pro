@@ -1,15 +1,18 @@
 import Foundation
+import Combine
 
 protocol SignalingClientDelegate: AnyObject {
     func signalingClient(_ client: SignalingClient, didReceiveRemoteSdp sdp: String, type: String)
     func signalingClient(_ client: SignalingClient, didReceiveCandidate candidate: [String: Any])
 }
 
-class SignalingClient: NSObject {
+class SignalingClient: NSObject ,ObservableObject {
+    static let shared = SignalingClient()
     weak var delegate: SignalingClientDelegate?
     private var webSocket: URLSessionWebSocketTask?
 
     private let serverUrl = URL(string: "ws://c8e62401610c.ngrok-free.app")!
+    @Published var isConnected: Bool = false
 
     func connect() {
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
@@ -21,9 +24,10 @@ class SignalingClient: NSObject {
     
     func disconnect() {
         webSocket?.cancel(with: .normalClosure, reason: nil)
+        webSocket = nil
+        isConnected = false
     }
-    
-    // MARK: - Sending Data
+
     func send(sdp: String, type: String) {
  
         let message = ["type": type, "sdp": sdp]
@@ -45,7 +49,7 @@ class SignalingClient: NSObject {
         }
     }
     
-    // MARK: - Receiving Data
+
     private func listen() {
         webSocket?.receive { [weak self] result in
             switch result {
@@ -84,9 +88,11 @@ class SignalingClient: NSObject {
 extension SignalingClient: URLSessionWebSocketDelegate {
     func urlSession(_ session: URLSession, webSocketTask: URLSessionWebSocketTask, didOpenWithProtocol protocol: String?) {
         print("WebSocket Connected")
+        isConnected = true
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let error = error { print("WebSocket Error: \(error)") }
+        isConnected = false
     }
 }

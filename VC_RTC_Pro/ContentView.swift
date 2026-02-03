@@ -67,13 +67,37 @@ struct ContentView: View {
                             .clipShape(Circle())
                     }
                     
-                    // Start Call
-                    Button(action: { viewModel.startCall() }) {
-                        Image(systemName: "phone.fill")
-                            .font(.system(size: 30))
-                            .padding()
-                            .background(Color.green)
-                            .clipShape(Circle())
+                    if !SignalingClient.shared.isConnected {
+                        Button {
+                            viewModel.startCall()
+                            SignalingClient.shared.isConnected = true
+                            
+                            
+                        }label :{
+                            Image(systemName: "phone.fill")
+                                .font(.system(size: 30))
+                                .padding()
+                                .background(Color.green)
+                                .clipShape(Circle())
+                            
+                        }
+                        
+                    }
+                    else{
+                        Button {
+                            viewModel.startCall()
+                            SignalingClient.shared.isConnected = false
+                            
+                            
+                        }label :{
+                            Image(systemName: "phone.fill")
+                                .font(.system(size: 30))
+                                .padding()
+                                .background(Color.red)
+                                .clipShape(Circle())
+                            
+                        }
+                        
                     }
                     
                     // Speaker
@@ -84,6 +108,7 @@ struct ContentView: View {
                             .background(viewModel.isSpeakerOn ? Color.blue : Color.gray)
                             .clipShape(Circle())
                     }
+                 
                 }
                 .foregroundColor(.white)
                 .padding(.bottom, 40)
