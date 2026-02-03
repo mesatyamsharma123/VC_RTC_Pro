@@ -121,6 +121,12 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
             delegate?.webRTCClient(self, didReceiveRemoteVideoTrack: track)
         }
     }
+    func peerConnection(_ peerConnection: RTCPeerConnection, didStartReceivingOn transceiver: RTCRtpTransceiver) {
+        if let track = transceiver.receiver.track as? RTCVideoTrack {
+            print("✅ Found Remote Video Track via Transceiver!")
+            delegate?.webRTCClient(self, didReceiveRemoteVideoTrack: track)
+        }
+    }
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {}
     func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {}
