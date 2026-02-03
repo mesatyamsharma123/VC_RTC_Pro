@@ -15,6 +15,7 @@ class CallViewModel: ObservableObject {
     
     // Local Video Renderer (kept to prevent deallocation)
     var localRenderer: RTCVideoRenderer?
+    private var isLocalVideoStarted = false
     
     init() {
         self.signalClient = SignalingClient()
@@ -60,10 +61,19 @@ class CallViewModel: ObservableObject {
         }
     }
     func endCall() {
-        connectionState = "Disconnected"
-        self.signalClient.disconnect()
-        self.signalClient.isConnected = false
-    }
+            // 1. Stop Camera & WebRTC
+            webRTCClient.stopCapture()
+            
+            // 2. Close WebSocket
+            signalClient.disconnect()
+            
+            // 3. Reset UI State
+            DispatchQueue.main.async {
+                self.remoteVideoTrack = nil
+                self.connectionState = "Disconnected"
+                self.isLocalVideoStarted = false // Allow camera to start again next time
+            }
+        }
     
     func toggleMute() {
         isMuted.toggle()

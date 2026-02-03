@@ -133,9 +133,20 @@ class WebRTCClient: NSObject {
             sender.track?.isEnabled = !isMuted
         }
     }
+    func stopCapture() {
+            
+            self.capturer?.stopCapture()
+            self.capturer = nil
+            
+         
+            self.localVideoTrack = nil
+            
+          
+            self.peerConnection.close()
+        }
 }
 
-// MARK: - Delegates
+
 extension WebRTCClient: RTCPeerConnectionDelegate {
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
         delegate?.webRTCClient(self, didDiscoverLocalCandidate: candidate)
