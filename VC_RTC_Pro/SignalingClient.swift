@@ -8,9 +8,8 @@ protocol SignalingClientDelegate: AnyObject {
 class SignalingClient: NSObject {
     weak var delegate: SignalingClientDelegate?
     private var webSocket: URLSessionWebSocketTask?
-    
-    // REPLACE with your actual signaling server URL
-    private let serverUrl = URL(string: "ws://YOUR_SERVER_IP:8080")!
+
+    private let serverUrl = URL(string: "ws://c8e62401610c.ngrok-free.app")!
 
     func connect() {
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
@@ -26,7 +25,7 @@ class SignalingClient: NSObject {
     
     // MARK: - Sending Data
     func send(sdp: String, type: String) {
-        // This is safe because both values are Strings
+ 
         let message = ["type": type, "sdp": sdp]
         sendData(message)
     }
