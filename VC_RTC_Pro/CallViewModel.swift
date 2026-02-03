@@ -59,6 +59,11 @@ class CallViewModel: ObservableObject {
             self?.signalClient.send(sdp: sdp, type: "offer")
         }
     }
+    func endCall() {
+        connectionState = "Disconnected"
+        self.signalClient.disconnect()
+        self.signalClient.isConnected = false
+    }
     
     func toggleMute() {
         isMuted.toggle()

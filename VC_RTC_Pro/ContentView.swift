@@ -1,5 +1,6 @@
 import SwiftUI
 import WebRTC
+import Combine
 
 // Helper: Wrapper for WebRTC Video View
 struct VideoView: UIViewRepresentable {
@@ -26,6 +27,7 @@ struct VideoView: UIViewRepresentable {
 
 struct ContentView: View {
     @StateObject var viewModel = CallViewModel()
+    @ObservedObject var signaling = SignalingClient.shared
     
     var body: some View {
         ZStack {
@@ -67,10 +69,10 @@ struct ContentView: View {
                             .clipShape(Circle())
                     }
                     
-                    if !SignalingClient.shared.isConnected {
+                    if signaling.isConnected {
                         Button {
                             viewModel.startCall()
-                            SignalingClient.shared.isConnected = true
+                            signaling.isConnected = false
                             
                             
                         }label :{
@@ -85,8 +87,8 @@ struct ContentView: View {
                     }
                     else{
                         Button {
-                            viewModel.startCall()
-                            SignalingClient.shared.isConnected = false
+                            viewModel.endCall()
+                            signaling.isConnected = true
                             
                             
                         }label :{

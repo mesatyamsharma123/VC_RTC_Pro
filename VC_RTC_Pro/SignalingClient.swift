@@ -12,7 +12,7 @@ class SignalingClient: NSObject ,ObservableObject {
     private var webSocket: URLSessionWebSocketTask?
 
     private let serverUrl = URL(string: "ws://c8e62401610c.ngrok-free.app")!
-    @Published var isConnected: Bool = false
+    @Published var isConnected: Bool = true
 
     func connect() {
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
@@ -25,7 +25,8 @@ class SignalingClient: NSObject ,ObservableObject {
     func disconnect() {
         webSocket?.cancel(with: .normalClosure, reason: nil)
         webSocket = nil
-        isConnected = false
+   
+        print("DisConnect from WebSocket")
     }
 
     func send(sdp: String, type: String) {
@@ -91,8 +92,12 @@ extension SignalingClient: URLSessionWebSocketDelegate {
         isConnected = true
     }
     
+   private func urlSession(_ session : URLSession ,weSocketTask  :URLSessionWebSocketTask ,didCloseWith : URLSessionWebSocketTask.CloseCode ,reason : Data?){
+        isConnected = false
+    }
+    
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let error = error { print("WebSocket Error: \(error)") }
-        isConnected = false
+      
     }
 }
