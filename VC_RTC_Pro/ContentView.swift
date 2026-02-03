@@ -92,7 +92,8 @@ struct ContentView: View {
                             
                             
                         }label :{
-                            Image(systemName: "phone.fill")
+                            Image(systemName: "phone.down.fill")
+
                                 .font(.system(size: 30))
                                 .padding()
                                 .background(Color.red)
