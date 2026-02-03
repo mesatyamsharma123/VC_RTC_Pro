@@ -16,6 +16,8 @@ class WebRTCClient: NSObject {
                                    kRTCMediaConstraintsOfferToReceiveVideo: kRTCMediaConstraintsValueTrue]
     
     private var localVideoTrack: RTCVideoTrack?
+   
+    private var capturer: RTCCameraVideoCapturer?
     
     override init() {
         RTCInitializeSSL()
@@ -35,26 +37,31 @@ class WebRTCClient: NSObject {
         self.peerConnection = factory.peerConnection(with: config, constraints: constraints, delegate: self)
     }
     
-    // MARK: - Media Setup
+   
     func startCaptureLocalVideo(renderer: RTCVideoRenderer) {
         guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else { return }
         
         let videoSource = factory.videoSource()
-        let capturer = RTCCameraVideoCapturer(delegate: videoSource)
+        
+        // --- FIX: Save to class property ---
+        self.capturer = RTCCameraVideoCapturer(delegate: videoSource)
+        
         localVideoTrack = factory.videoTrack(with: videoSource, trackId: "video0")
         localVideoTrack?.add(renderer)
         
-        // Add Video to Peer Connection
         peerConnection.add(localVideoTrack!, streamIds: ["stream0"])
         
         // Start capturing
         let formats = RTCCameraVideoCapturer.supportedFormats(for: device)
+        // Using the last format is risky (might be 4K which is too heavy).
+        // Better to find a 640x480 or 1280x720 format for reliability.
         if let format = formats.last {
             let fps = format.videoSupportedFrameRateRanges.first!.maxFrameRate
-            capturer.startCapture(with: device, format: format, fps: Int(fps))
+            // Use the class property to start capture
+            self.capturer?.startCapture(with: device, format: format, fps: Int(fps))
         }
 
-        // Add Audio
+        // Audio
         let audioSource = factory.audioSource(with: RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil))
         let audioTrack = factory.audioTrack(with: audioSource, trackId: "audio0")
         peerConnection.add(audioTrack, streamIds: ["stream0"])
@@ -81,12 +88,10 @@ class WebRTCClient: NSObject {
         }
     }
     
-    // --- THIS IS THE FIXED FUNCTION ---
     func set(remoteSdp: String, type: String) {
         let sdpType: RTCSdpType = type == "offer" ? .offer : .answer
         let sdp = RTCSessionDescription(type: sdpType, sdp: remoteSdp)
         
-        // Error fix: Added closure instead of nil
         peerConnection.setRemoteDescription(sdp) { error in
             if let error = error {
                 print("Error setting remote description: \(error)")
@@ -98,7 +103,6 @@ class WebRTCClient: NSObject {
         peerConnection.add(remoteCandidate)
     }
     
-    // MARK: - Mute Logic
     func muteAudio(_ isMuted: Bool) {
         if let sender = peerConnection.senders.first(where: { $0.track?.kind == "audio" }) {
             sender.track?.isEnabled = !isMuted
@@ -106,16 +110,8 @@ class WebRTCClient: NSObject {
     }
 }
 
-
+// MARK: - Delegates
 extension WebRTCClient: RTCPeerConnectionDelegate {
-    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {
-    
-    }
-    
-    func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
-    
-    }
-    
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
         delegate?.webRTCClient(self, didDiscoverLocalCandidate: candidate)
     }
@@ -126,6 +122,8 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
         }
     }
     
+    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {}
+    func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {}
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange stateChanged: RTCSignalingState) {}
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
         delegate?.webRTCClient(self, didChangeConnectionState: newState)
