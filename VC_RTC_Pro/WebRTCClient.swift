@@ -38,35 +38,60 @@ class WebRTCClient: NSObject {
     }
     
    
-    func startCaptureLocalVideo(renderer: RTCVideoRenderer) {
-        guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else { return }
-        
-        let videoSource = factory.videoSource()
-        
-        // --- FIX: Save to class property ---
-        self.capturer = RTCCameraVideoCapturer(delegate: videoSource)
-        
-        localVideoTrack = factory.videoTrack(with: videoSource, trackId: "video0")
-        localVideoTrack?.add(renderer)
-        
-        peerConnection.add(localVideoTrack!, streamIds: ["stream0"])
-        
-        // Start capturing
-        let formats = RTCCameraVideoCapturer.supportedFormats(for: device)
-        // Using the last format is risky (might be 4K which is too heavy).
-        // Better to find a 640x480 or 1280x720 format for reliability.
-        if let format = formats.last {
-            let fps = format.videoSupportedFrameRateRanges.first!.maxFrameRate
-            // Use the class property to start capture
-            self.capturer?.startCapture(with: device, format: format, fps: Int(fps))
-        }
+    // MARK: - Media Setup
+        func startCaptureLocalVideo(renderer: RTCVideoRenderer) {
+            // 1. SAFETY CHECK: If we already have a capturer, just attach the new view and EXIT.
+            if let capturer = self.capturer {
+                print("⚠️ Camera is already running. Just updating the view.")
+                self.localVideoTrack?.add(renderer)
+                return
+            }
+            
+            guard let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front) else { return }
+            
+            let videoSource = factory.videoSource()
+            
+            // 2. Initialize Capturer (Store in class property)
+            self.capturer = RTCCameraVideoCapturer(delegate: videoSource)
+            
+            localVideoTrack = factory.videoTrack(with: videoSource, trackId: "video0")
+            localVideoTrack?.add(renderer)
+            
+            peerConnection.add(localVideoTrack!, streamIds: ["stream0"])
+            
+            // 3. Start capturing
+            let formats = RTCCameraVideoCapturer.supportedFormats(for: device)
+            
+            // Use a medium quality format (640x480) to be safe and save bandwidth
+            // High 4K resolutions can sometimes cause the error -17281 too.
+            let targetWidth = 640
+            let targetHeight = 480
+            
+            var selectedFormat: AVCaptureDevice.Format? = nil
+            var currentDiff = Int.max
+            
+            for format in formats {
+                let dimension = CMVideoFormatDescriptionGetDimensions(format.formatDescription)
+                let diff = abs(Int(dimension.width) - targetWidth) + abs(Int(dimension.height) - targetHeight)
+                if diff < currentDiff {
+                    selectedFormat = format
+                    currentDiff = diff
+                }
+            }
+            
+            if let format = selectedFormat {
+                let fps = 30 // Force 30 FPS
+                print("✅ Starting Camera: \(CMVideoFormatDescriptionGetDimensions(format.formatDescription)) at \(fps)fps")
+                self.capturer?.startCapture(with: device, format: format, fps: fps)
+            } else {
+                print("❌ Could not find a suitable camera format.")
+            }
 
-        // Audio
-        let audioSource = factory.audioSource(with: RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil))
-        let audioTrack = factory.audioTrack(with: audioSource, trackId: "audio0")
-        peerConnection.add(audioTrack, streamIds: ["stream0"])
-    }
-    
+            // Add Audio
+            let audioSource = factory.audioSource(with: RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: nil))
+            let audioTrack = factory.audioTrack(with: audioSource, trackId: "audio0")
+            peerConnection.add(audioTrack, streamIds: ["stream0"])
+        }
     // MARK: - Signaling
     func offer(completion: @escaping (String) -> Void) {
         let constraints = RTCMediaConstraints(mandatoryConstraints: mediaConstrains, optionalConstraints: nil)
