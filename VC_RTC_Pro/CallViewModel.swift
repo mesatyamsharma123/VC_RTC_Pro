@@ -125,7 +125,7 @@ extension CallViewModel: SignalingClientDelegate {
     }
 }
 
-// MARK: - WebRTC Delegate (WebRTC -> UI/Socket)
+
 extension CallViewModel: WebRTCClientDelegate {
     func webRTCClient(_ client: WebRTCClient, didDiscoverLocalCandidate candidate: RTCIceCandidate) {
         let candidateDict: [String: Any] = [
