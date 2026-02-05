@@ -19,7 +19,7 @@ class SignalingClient: NSObject ,ObservableObject {
         let session = URLSession(configuration: .default, delegate: self, delegateQueue: OperationQueue())
         webSocket = session.webSocketTask(with: serverUrl)
         webSocket?.resume()
-        print("Connecting to WebSocket...")
+        print("Connecting to WebSocket.....")
         listen()
     }
     
