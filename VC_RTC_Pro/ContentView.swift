@@ -5,7 +5,7 @@ import Combine
 // Helper: Wrapper for WebRTC Video View
 struct VideoView: UIViewRepresentable {
     let track: RTCVideoTrack?
-    var onAppear: ((RTCVideoRenderer) -> Void)? = nil // ✅ Added this back
+    var onAppear: ((RTCVideoRenderer) -> Void)? = nil 
     
     func makeUIView(context: Context) -> RTCMTLVideoView {
         let view = RTCMTLVideoView(frame: .zero)
@@ -33,7 +33,7 @@ struct ContentView: View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
             
-            // 1. Remote Video (Full Screen)
+            // 1. Remote Video
             if let remoteTrack = viewModel.remoteVideoTrack {
                 VideoView(track: remoteTrack)
                     .edgesIgnoringSafeArea(.all)
@@ -60,7 +60,6 @@ struct ContentView: View {
                 // 3. Controls
                 HStack(spacing: 40) {
                     
-                    // Mute
                     Button(action: { viewModel.toggleMute() }) {
                         Image(systemName: viewModel.isMuted ? "mic.slash.fill" : "mic.fill")
                             .font(.system(size: 24))
@@ -103,7 +102,6 @@ struct ContentView: View {
                         
                     }
                     
-                    // Speaker
                     Button(action: { viewModel.toggleSpeaker() }) {
                         Image(systemName: viewModel.isSpeakerOn ? "speaker.wave.3.fill" : "speaker.fill")
                             .font(.system(size: 24))
@@ -118,7 +116,6 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            // FIXED: Call function via viewModel
             viewModel.checkPermissions()
             viewModel.connect()
         }

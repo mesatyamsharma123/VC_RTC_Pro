@@ -41,7 +41,7 @@ class WebRTCClient: NSObject {
     // MARK: - Media Setup
         func startCaptureLocalVideo(renderer: RTCVideoRenderer) {
             // 1. SAFETY CHECK: If we already have a capturer, just attach the new view and EXIT.
-            if let capturer = self.capturer {
+            if self.capturer != nil {
                 print("⚠️ Camera is already running. Just updating the view.")
                 self.localVideoTrack?.add(renderer)
                 return
@@ -134,16 +134,16 @@ class WebRTCClient: NSObject {
         }
     }
     func stopCapture() {
-            
-            self.capturer?.stopCapture()
-            self.capturer = nil
-            
-         
-            self.localVideoTrack = nil
-            
-          
-            self.peerConnection.close()
-        }
+        
+        self.capturer?.stopCapture()
+        self.capturer = nil
+        
+        
+        self.localVideoTrack = nil
+        
+        
+        self.peerConnection.close()
+    }
 }
 
 
@@ -163,6 +163,8 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
             delegate?.webRTCClient(self, didReceiveRemoteVideoTrack: track)
         }
     }
+    
+
     
     func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {}
     func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {}

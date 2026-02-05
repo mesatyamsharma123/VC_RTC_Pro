@@ -7,11 +7,12 @@ protocol SignalingClientDelegate: AnyObject {
 }
 
 class SignalingClient: NSObject ,ObservableObject {
+    
     static let shared = SignalingClient()
     weak var delegate: SignalingClientDelegate?
     private var webSocket: URLSessionWebSocketTask?
-
-    private let serverUrl = URL(string: "ws://c8e62401610c.ngrok-free.app")!
+    private let serverUrl = URL(string: "ws://7485-106-51-65-110.ngrok-free.app")!
+    
     @Published var isConnected: Bool = true
 
     func connect() {
@@ -29,14 +30,12 @@ class SignalingClient: NSObject ,ObservableObject {
         print("DisConnect from WebSocket")
     }
 
-    func send(sdp: String, type: String) {
- 
+    func sendSdp(sdp: String, type: String) {
         let message = ["type": type, "sdp": sdp]
         sendData(message)
     }
     
-    func send(candidate: [String: Any]) {
-        // FIXED: Explicitly tell Swift this is [String: Any]
+    func sendIceCandiadte(candidate: [String: Any]) {
         let message: [String: Any] = ["type": "candidate", "candidate": candidate]
         sendData(message)
     }
@@ -62,7 +61,7 @@ class SignalingClient: NSObject ,ObservableObject {
                     if let text = String(data: data, encoding: .utf8) { self?.handleIncomingMessage(text) }
                 @unknown default: break
                 }
-                self?.listen() // Keep listening
+                self?.listen()
             case .failure(let error):
                 print("WebSocket Receive Error: \(error)")
             }
@@ -92,12 +91,11 @@ extension SignalingClient: URLSessionWebSocketDelegate {
         isConnected = true
     }
     
-   private func urlSession(_ session : URLSession ,weSocketTask  :URLSessionWebSocketTask ,didCloseWith : URLSessionWebSocketTask.CloseCode ,reason : Data?){
+   private func urlSession(_ session : URLSession ,weSocketTask  :URLSessionWebSocketTask , didCloseWith closeCode : URLSessionWebSocketTask.CloseCode ,reason : Data?){
         isConnected = false
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let error = error { print("WebSocket Error: \(error)") }
-      
     }
 }
