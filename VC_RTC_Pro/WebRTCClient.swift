@@ -133,15 +133,11 @@ class WebRTCClient: NSObject {
             sender.track?.isEnabled = !isMuted
         }
     }
+    
     func stopCapture() {
-        
         self.capturer?.stopCapture()
         self.capturer = nil
-        
-        
         self.localVideoTrack = nil
-        
-        
         self.peerConnection.close()
     }
 }

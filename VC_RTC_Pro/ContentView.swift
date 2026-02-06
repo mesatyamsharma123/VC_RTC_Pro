@@ -14,12 +14,12 @@ struct VideoView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: RTCMTLVideoView, context: Context) {
-        // Case 1: Remote Video
+        // Remote Video
         if let track = track {
             track.add(uiView)
         }
         
-        // Case 2: Local Video
+        //Local Video
         onAppear?(uiView)
     }
 }
@@ -57,10 +57,12 @@ struct ContentView: View {
                 }
                 Spacer()
                 
-                // 3. Controls
+                
                 HStack(spacing: 40) {
                     
-                    Button(action: { viewModel.toggleMute() }) {
+                    Button(action:{
+                        viewModel.toggleMute()
+                    }) {
                         Image(systemName: viewModel.isMuted ? "mic.slash.fill" : "mic.fill")
                             .font(.system(size: 24))
                             .padding()
@@ -68,31 +70,25 @@ struct ContentView: View {
                             .clipShape(Circle())
                     }
                     
-                    if signaling.isConnected {
+                    if viewModel.isConnected {
                         Button {
                             viewModel.startCall()
-                            signaling.isConnected = false
-                            
-                            
+                            viewModel.isConnected = false
                         }label :{
                             Image(systemName: "phone.fill")
                                 .font(.system(size: 30))
                                 .padding()
                                 .background(Color.green)
                                 .clipShape(Circle())
-                            
                         }
                         
                     }
                     else{
                         Button {
                             viewModel.endCall()
-                            signaling.isConnected = true
-                            
-                            
+                            viewModel.isConnected = true
                         }label :{
                             Image(systemName: "phone.down.fill")
-
                                 .font(.system(size: 30))
                                 .padding()
                                 .background(Color.red)
@@ -102,7 +98,9 @@ struct ContentView: View {
                         
                     }
                     
-                    Button(action: { viewModel.toggleSpeaker() }) {
+                    Button(action: {
+                        viewModel.toggleSpeaker()
+                    }) {
                         Image(systemName: viewModel.isSpeakerOn ? "speaker.wave.3.fill" : "speaker.fill")
                             .font(.system(size: 24))
                             .padding()

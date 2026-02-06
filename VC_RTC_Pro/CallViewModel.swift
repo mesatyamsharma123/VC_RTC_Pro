@@ -12,10 +12,16 @@ class CallViewModel: ObservableObject {
     @Published var connectionState: String = "Disconnected"
     @Published var isMuted: Bool = false
     @Published var isSpeakerOn: Bool = false
+    @Published var isConnected: Bool = false
     
     
 //    var localRenderer: RTCVideoRenderer?
-    private var isLocalVideoStarted = false
+//    private var isLocalVideoStarted = false
+    
+    
+      /*
+       Initialization ensures that all dependencies, delegates, and system configurations are ready before any asynchronous events occur, preventing race conditions and lost callbacks.
+       */
     
     init() {
         self.signalClient = SignalingClient()
@@ -23,8 +29,6 @@ class CallViewModel: ObservableObject {
         
         self.signalClient.delegate = self
         self.webRTCClient.delegate = self
-        
-        
         configureAudioSession()
     }
     
@@ -34,7 +38,7 @@ class CallViewModel: ObservableObject {
         do {
             try session.setCategory(.playAndRecord,
                                     mode: .voiceChat,
-                                    options: [.allowBluetooth, .allowBluetoothA2DP])
+                                    options: [.defaultToSpeaker])
             try session.setActive(true)
         } catch {
             print("Failed to configure AudioSession: \(error)")
@@ -43,6 +47,7 @@ class CallViewModel: ObservableObject {
     
     func connect() {
         signalClient.connect()
+        self.isConnected = true
     }
     
     func startLocalVideo(renderer: RTCVideoRenderer) {
@@ -63,7 +68,7 @@ class CallViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.remoteVideoTrack = nil
             self.connectionState = "Disconnected"
-            self.isLocalVideoStarted = false // Allow camera to start again next time
+//            self.isLocalVideoStarted = false
         }
     }
     
@@ -106,6 +111,7 @@ extension CallViewModel: SignalingClientDelegate {
         webRTCClient.set(remoteSdp: sdp, type: type)
         
         if type == "offer" {
+            
             // Automatically answer incoming calls
             DispatchQueue.main.async { self.connectionState = "Incoming Call..." }
             
@@ -137,7 +143,7 @@ extension CallViewModel: WebRTCClientDelegate {
     }
     
     func webRTCClient(_ client: WebRTCClient, didReceiveRemoteVideoTrack track: RTCVideoTrack) {
-        print("✅ RECEIVED REMOTE VIDEO TRACK")
+        print("RECEIVED REMOTE VIDEO TRACK")
         
       
         DispatchQueue.main.async {
