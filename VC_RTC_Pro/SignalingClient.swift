@@ -11,7 +11,7 @@ class SignalingClient: NSObject ,ObservableObject {
     static let shared = SignalingClient()
     weak var delegate: SignalingClientDelegate?
     private var webSocket: URLSessionWebSocketTask?
-    private let serverUrl = URL(string: "wss://9750-2401-4900-c984-e76b-e44f-cd2f-a58e-b906.ngrok-free.app")!
+    private let serverUrl = URL(string: "wss://6d6f-106-51-65-110.ngrok-free.app")!
     
 //    @Published var isConnected: Bool = true
 
